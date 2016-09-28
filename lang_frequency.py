@@ -3,7 +3,6 @@ from collections import Counter
 import os
 import re
 
-NUM_OF_WORDS = 10
 
 def load_data(filepath):
     if not os.path.exists(filepath):
@@ -13,14 +12,15 @@ def load_data(filepath):
     return data
 
 def get_most_frequent_words(text):
+    NUM_OF_WORDS = 10
     print(Counter(re.split('\W+',data.lower())).most_common()[:NUM_OF_WORDS])
 
 
 if __name__ == '__main__':
     if (len(sys.argv) != 2):
-        exit("Usage:")
+        exit("Usage:python3.5 lang_frequency.py path_do_data")
     data  = load_data(sys.argv[1])
     if not data:
         exit("data is unvalid")
-    print("{0} most frequent words from this file".format(NUM_OF_WORDS))
+    print("10 most frequent words from this file")
     get_most_frequent_words(data)
